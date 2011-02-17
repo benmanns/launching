@@ -14,5 +14,10 @@ module Launching
       data['community'].unshift({ 'title' => 'Brought to you by Benjamin Manns', 'url' => 'http://benmanns.com' })
       "\r\nrefreshContent(#{data.to_json});"
     end
+
+    get '/services/connection_info' do
+      content_type :json
+      { :ip_address => request.ip }.to_json
+    end
   end
 end
