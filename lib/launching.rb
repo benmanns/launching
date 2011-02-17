@@ -23,5 +23,9 @@ module Launching
     get '/HNAP1/' do
       halt 404
     end
+
+    get '/TEADevInfo/' do
+      halt 404
+    end
   end
 end
