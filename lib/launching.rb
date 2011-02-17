@@ -19,5 +19,9 @@ module Launching
       content_type :json
       { :ip_address => request.ip }.to_json
     end
+
+    get '/HNAP1/' do
+      halt 404
+    end
   end
 end
