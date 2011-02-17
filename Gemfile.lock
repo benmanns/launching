@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    dalli (1.0.2)
     json (1.5.1)
     rack (1.2.1)
     shotgun (0.8)
@@ -14,6 +15,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   json
   shotgun
   sinatra
