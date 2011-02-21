@@ -1,7 +1,7 @@
 module Launching
   class Application < Sinatra::Base
     configure do
-      require 'open-uri'
+      require 'net/http'
 
       CACHE = Dalli::Client.new
     end
@@ -9,7 +9,12 @@ module Launching
     get '/pages/launcher/na' do
       content_type :js
       unless content = CACHE.get('/pages/launcher/na')
-        open('http://ll.leagueoflegends.com/pages/launcher/na').read =~ /refreshContent\((.*)\);/
+        uri = URI.parse 'http://ll.leagueoflegends.com/pages/launcher/na'
+        request = Net::HTTP::Get.new uri.path
+        response = Net::HTTP.start uri.host, uri.port do |http|
+          http.request request
+        end
+        response.body =~ /refreshContent\((.*)\);/
         data = JSON.parse $1
         data['status'] = true
         data['serverStatus'] = 1
