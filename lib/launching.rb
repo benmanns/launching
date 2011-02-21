@@ -38,5 +38,15 @@ module Launching
     get '/TEADevInfo/' do
       halt 404
     end
+
+    post '/harassment_report/add/na' do
+      uri = URI.parse 'http://ll.leagueoflegends.com/harassment_report/add/na'
+      request = Net::HTTP::Post.new uri.path
+      request.set_form_data params
+      response = Net::HTTP.start uri.host, uri.port do |http|
+        http.request request
+      end
+      response.body
+    end
   end
 end
