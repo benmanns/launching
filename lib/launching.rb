@@ -9,7 +9,7 @@ module Launching
     get '/pages/launcher/na' do
       content_type :js
       unless content = CACHE.get('/pages/launcher/na')
-        halt 500 unless open('http://ll.leagueoflegends.com/pages/launcher/na').read =~ /refreshContent\((.*)\);/
+        open('http://ll.leagueoflegends.com/pages/launcher/na').read =~ /refreshContent\((.*)\);/
         data = JSON.parse $1
         data['status'] = true
         data['serverStatus'] = 1
