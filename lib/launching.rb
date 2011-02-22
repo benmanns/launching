@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.require :default
+
 module Launching
   class Application < Sinatra::Base
     configure do
